@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>DanPHPSupport: Installation</title>
+<style type="text/css">
+<!--
+body,td,th {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+h1 {
+	text-align: center;
+}
+.style1 {
+	font-size: medium;
+	font-weight: bold;
+	text-decoration: underline;
+}
+h2 {
+	text-align: center;
+}
+-->
+</style></head>
+
+<body>
+<div align="center">
+  <table width="95%" border="1" cellspacing="0" cellpadding="15">
+    <tr bgcolor="#EEEEEE">
+      <td><h1>DanPHPSupport</h1>
+        <h2>Installation Instructions</h2>
+      <p align="left">NOTE: I haven't had time to write some proper installation instructions, so this is definitely not complete. However, it should aid you in installing DanPHPSupport. In future versions of DanPHPSupport, there will be an automatic installer, but as this is a beta version, you have to install it manually.<em><strong> READ THIS CAREFULLY! </strong></em></p>
+      <p align="left"><span class="style1">1. Create the Database<br />
+        </span>You'll need to create a database for DanPHPSupport. You can do this in phpMyAdmin by using the 'Create New Database' option in it. Call the database 'support' (or something similar).</p>
+      <p align="left"><span class="style1">2. Import the database<br />
+        </span>The DanPHPSupport database is inside the 'install.sql' file that comes with DanPHPSupport. Use phpMyAdmin to import this SQL file (click on the database on the left side of the screen, then click on 'SQL' at the top. Choose the install.sql database using the 'Browse...' or 'Choose' button at the bottom.</p>
+      <p align="left"><span class="style1">3. Change the admin user settings (including password)</span><br />
+        Unfortunately, there isn't a users control panel in DanPHPSupport (yet). So, to change your password, make sure you're still in phpMyAdmin and click on the DanPHPSupport database on the side. 
+        Click on the 'users' table and when it loads, click 'Browse' at the top (next to 'Structure'). Click on the pencil icon next to the Default Administrator. This will allow you to edit it. Change the First Name, Last Name, E-Mail and Username to whatever you want. For the password box, type in a new password and click 'MD5' in the dropdown box next to it. When you click 'Go' at the bottom, this will encrypt your password</p>
+      <p align="left"><span class="style1">4. Change some other settings</span><br />
+        You also need to change a few other settings. Click on the 'settings' table and then click 'Browse' (next to Structure). Tick the 'adminEmail' and 'fromEmail' fields, and then click on the pencil icon next to '<em>With Selected:</em>'. Set the following values:<br />
+        - adminEmail - Your email address<br /> 
+        - fromEmail - The email address the support notification come from (when you reply to someone's ticket). This shouldn't be a real email address (eg. make it something like support-noreply@example.com, replacing example.com with your domain)</p>
+      <p align="left"><span class="style1">5. Set the DanPHPSupport settings(/includes/settings.php)<br />
+        </span>You'll need to tell DanPHPSupport what your database settings are. Open the includes/settings.php file, and change the settings to suit your configuration.</p>
+      <p align="left"><span class="style1">6. Open the DanPHPSupport administration panel</span><br />
+        Go to the /admin.php address, for example if you installed DanPHPSupport at http://www.example.com/support/ then you should go to http://www.example.com/support/admin.php. Add some support ticket categories and knowledgebase categories</p>
+      <p align="left">You're done! Test out your new DanPHPSupport installation and see if it works properly.</p>
+      <p align="left">Questions? Please see the <a href="http://DanPHPSupport.dansoftaustralia.net/">DanPHPSupport webpage</a> and our <a href="http://sourceforge.net/projects/danphpsupport/">SourceForge Project page</a> </p>
+      <p align="left">&nbsp;</p>
+      <p align="left">--Daniel Lo Nigro<br />
+        <a href="http://www.dansoftaustralia.net/">DanSoft Australia          </a></p>
+	    
+      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td width="50%" valign="top"><div align="center"><span class="style3">Hosted by</span><br />
+            <a href="http://sourceforge.net"><img src="http://sourceforge.net/sflogo.php?group_id=149229&amp;type=4" width="125" height="37" border="0" alt="SourceForge.net Logo" /></a>
+            <br />
+            </div></td>
+            <td width="50%" valign="bottom"><div align="right"><span class="style2">Last Modified Wednesday September 28, 2005</span></div></td>
+          </tr>
+        </table>      </td>
+    </tr>
+  </table>
+</div>
+</body>
+</html>
