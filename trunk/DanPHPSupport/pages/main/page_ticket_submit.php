@@ -46,11 +46,11 @@ if (isset($_POST['submit2'])) {
 		$database->safe_query("INSERT INTO ticket_messages
 								  (date, message, ticketID, userID)
 								  VALUES (NOW(), '%s', %i, %i)",
-							  array($_POST['message'], $ticket_id, $_SESSION['support_id']),
+							  array(nl2br($_POST['message']), $ticket_id, $_SESSION['support_id']),
 							  __FILE__, __LINE__);
 							  
-		$message = newTicketMail($_SESSION['support_id'], $_POST['subject'], $_POST['severity'],
-								 $_POST['message']);
+		$message = newTicketMail($_SESSION['support_id'], stripslashes($_POST['subject']), $_POST['severity'],
+								 stripslashes($_POST['message']));
 		
 		mail($SETTINGS['adminEmail'], "New support ticket (ID #{$ticket_id})", $message, "From: {$SETTINGS['fromEmail']}");
 		pageHeader("Ticket Received");

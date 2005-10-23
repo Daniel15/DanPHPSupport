@@ -36,12 +36,10 @@ if (isset($_POST['post']) && $_POST['post'] != "") {
 		die("ERROR: You can't post a blank message!");
 	}
 	
-	$_POST['message'] = nl2br($_POST['message']);
-	
 	$database->safe_query("INSERT INTO ticket_messages
 							  (date, message, ticketID, userID)
 							  VALUES (NOW(), '%s', %i, %i)",
-						   array($_POST['message'], $_POST['post'], $_SESSION['admin_id']),
+						   array(nl2br($_POST['message']), $_POST['post'], $_SESSION['admin_id']),
 						   __FILE__, __LINE__);
 	
 	$database->safe_query("UPDATE tickets
@@ -57,7 +55,7 @@ if (isset($_POST['post']) && $_POST['post'] != "") {
 							array($_POST['post']), __FILE__, __LINE__);
 	$row = $database->fetch_row();
 	
-	$message = updateMail($_POST['post'], $row['subject'], $_POST['message'], getStatusName($_POST['status']), "http://{$_SERVER['HTTP_HOST']}".dirname($_SERVER['PHP_SELF']));
+	$message = updateMail($_POST['post'], stripslashes($row['subject']), stripslashes($_POST['message']), getStatusName($_POST['status']), "http://{$_SERVER['HTTP_HOST']}".dirname($_SERVER['PHP_SELF']));
 	
 	mail($row['email'], "Support Ticket {$_POST['post']} updated", $message, "From: {$SETTINGS['fromEmail']}");
 	writeError("New message added to ticket");
