@@ -12,8 +12,8 @@
 |       header stays attached.      |
 \***********************************/
 
-// VERSION: 0.1
-// DATE: 27th September 2005
+// VERSION: 0.2
+// DATE: 31st October 2005
 
 //PAGE_TICKET_MAIN.PHP: Main ticket page.
 

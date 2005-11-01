@@ -17,7 +17,7 @@
 
 //PAGE_KB_SEEACH.PHP: Knowledgebase search page
 
-if (!defined('IN_SUPPORT') || eregi("page_index.php",$_SERVER['PHP_SELF'])) {
+if (!defined('IN_SUPPORT') || eregi("page_kb_search.php",$_SERVER['PHP_SELF'])) {
     die("You can't run this directly!");
 }
 
@@ -36,28 +36,41 @@ if (isset($_GET['q'])) {
 								       ORDER BY score DESC, views DESC", 
 									   array($_GET['q'], $_GET['q']), __FILE__, __LINE__);
 	$results_count = $database->get_num_rows();
-	echo <<<EOT
-Your query '{$_GET['q']}' returned {$results_count} results<br><br>
-<table width='100%' cellspacing='0' cellpadding='0' border='0'>
- <tr>
-  <td width='60'><b>Score</b></td>
-  <td><b>Title</b></td>
-  <td><b>Category</b></td>
-  <td width='60'><b>Views</b></td>
- </tr>
+	
+	if ($results_count == 0) {
+		echo <<<EOT
+<b><font color='red'>Your search for '{$_GET['q']}' produced no results. </font></b><br>
+<b>Suggestions:</b>
+ <ul>
+  <li>Words that appear in more than 50% of articles are automatically filtered out. Try more specific words
+  <li>Check your spelling
+  <li>Try different words that have the same meaning
+ </ul>
+EOT;
+	} else {
+		echo <<<EOT
+	Your query '{$_GET['q']}' returned {$results_count} results<br><br>
+	<table width='100%' cellspacing='0' cellpadding='0' border='0'>
+	 <tr>
+	  <td width='60'><b>Score</b></td>
+	  <td><b>Title</b></td>
+	  <td><b>Category</b></td>
+	  <td width='60'><b>Views</b></td>
+	 </tr>
 EOT;
 	
-	for ($x=0; $x < $results_count; $x++) {
-		$row = $database->fetch_row();
-		$row['score'] = round($row['score'] * 100, 2); 
-		echo <<<EOT
-<tr>
- <td>{$row['score']}</td>
- <td><a href='index.php?page=kb_view&amp;id={$row['ID']}'>{$row['title']}</a></td>
- <td><a href='index.php?page=kb_cat&amp;id={$row['categoryID']}'>{$row['catName']}</a></td>
- <td>{$row['views']}</td>
-</tr>
+		for ($x=0; $x < $results_count; $x++) {
+			$row = $database->fetch_row();
+			$row['score'] = round($row['score'] * 100, 2); 
+			echo <<<EOT
+	<tr>
+	 <td>{$row['score']}</td>
+	 <td><a href='index.php?page=kb_view&amp;id={$row['ID']}'>{$row['title']}</a></td>
+	 <td><a href='index.php?page=kb_cat&amp;id={$row['categoryID']}'>{$row['catName']}</a></td>
+	 <td>{$row['views']}</td>
+	</tr>
 EOT;
+		}
 	}
 	echo "</table>";
 } else {

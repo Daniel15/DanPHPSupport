@@ -12,8 +12,8 @@
 |       header stays attached.      |
 \***********************************/
 
-// VERSION: 0.1
-// DATE: 26th September 2005
+// VERSION: 0.2
+// DATE: 31st October 2005
 
 //TEMPLATES.PHP: Templates for various stuff
 
@@ -25,6 +25,13 @@ function adminPanel() {
 <html>
  <head>
   <title>DanPHPSupport - Administration</title>
+  <script language='javascript'>
+  //if this frame page is loaded within a frameset, 'break out' of the frameset.
+  //eg. If admin login expires and user prompted for re-login
+  if (top.location != location) {
+    top.location.href = document.location.href ;
+  }
+  </script>
  </head>
 
  <frameset cols="185,*" framespacing="2">
@@ -46,8 +53,8 @@ function adminLoginForm($error = "", $username = "") {
  Please enter your username and password to login to the administration panel:
 </p>
 <form action="admin.php?do=login" method="POST">
- Username: &nbsp;<input type="text" name="username" value="{$username}"><br>
- Password: &nbsp;<input type="password" name="password"><br>
+ Username: &nbsp;<input type="text" name="username" value="{$username}" size='50'><br>
+ Password: &nbsp;<input type="password" name="password" size='50'><br>
  <input type="submit" value="Log in">
 </form>
 EOT;
@@ -63,8 +70,8 @@ function supportLoginForm($message = "", $error = "", $username = "", $return = 
 <form action="index.php?page=login" method="POST">
  <input type='hidden' name='login2' value='true'>
  <input type='hidden' name='return' value='{$return}'>
- Username: &nbsp;<input type="text" name="username" value="{$username}"><br>
- Password: &nbsp;<input type="password" name="password"><br>
+ Username: &nbsp;<input type="text" name="username" value="{$username}" size='50'><br>
+ Password: &nbsp;<input type="password" name="password" size='50'><br>
  <input type="submit" value="Log in">
 </form>
 EOT;
@@ -117,7 +124,7 @@ function KBSearchForm($query = "") {
 	echo <<<EOT
 <form action='index.php' method='GET'>
  <input type='hidden' name='page' value='kb_search'>
- Keywords: <input type='text' name='q' value='{$query}'>
+ Keywords: <input type='text' name='q' value='{$query}' size='50'>
  <input type='submit' value='search'>
 </form>	
 EOT;
@@ -132,12 +139,12 @@ function registerForm($return, $error = "", $username = "", $firstname = "", $la
 </p>
 <form action='index.php?page=register&return={$return}' method='POST'>
  <input type='hidden' name='register2' value='true'>
- Username: <input type='text' name='username' value='{$username}'><br>
- First Name: <input type='text' name='firstname' value='{$firstname}'><br>
- Last Name: <input type='text' name='lastname' value='{$lastname}'><br>
- E-Mail Address: <input type='text' name='email' value='{$email}'><br>
- Password: <input type='password' name='password'><br>
- Confirm Password: <input type='password' name='confirm'><br>
+ Username: <input type='text' name='username' value='{$username}' size='50'><br>
+ First Name: <input type='text' name='firstname' value='{$firstname}' size='50'><br>
+ Last Name: <input type='text' name='lastname' value='{$lastname}' size='50'><br>
+ E-Mail Address: <input type='text' name='email' value='{$email}' size='50'><br>
+ Password: <input type='password' name='password' size='50'><br>
+ Confirm Password: <input type='password' name='confirm' size='50'><br>
  <input type='submit' value='Sign Up'>
 EOT;
 }

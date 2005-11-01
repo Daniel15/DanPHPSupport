@@ -1,7 +1,5 @@
 BODY
 {
-    BACKGROUND-ATTACHMENT: fixed;
-    BACKGROUND-IMAGE: url(backimg.jpg);
     FONT: x-small Verdana, Arial, Helvetica, sans-serif;
     BACKGROUND-COLOR: #ffffff
 }
@@ -10,48 +8,37 @@ H1
     FONT-WEIGHT: bold;
     COLOR: #000000;
     FONT-FAMILY: verdana, Arial, Helvetica, sans-serif
-}
-H2
-{
-    FONT-WEIGHT: bold;
-    COLOR: #000000;
-    FONT-FAMILY: verdana, Arial, Helvetica, sans-serif
-}
-H3
-{
-    FONT-WEIGHT: bold;
-    COLOR: #000000;
-    FONT-FAMILY: verdana, Arial, Helvetica, sans-serif
-}
-H4
-{
-    FONT-WEIGHT: bold;
-    COLOR: #000000;
-    FONT-FAMILY: verdana, Arial, Helvetica, sans-serif
-}
-H1
-{
     FONT-SIZE: 145%;
     MARGIN-BOTTOM: 0.5em
 }
 H2
 {
+    FONT-WEIGHT: bold;
+    COLOR: #000000;
+    FONT-FAMILY: verdana, Arial, Helvetica, sans-serif
     MARGIN-TOP: 1.5em;
     FONT-SIZE: 125%;
     MARGIN-BOTTOM: 0.5em
 }
 H3
 {
+    FONT-WEIGHT: bold;
+    COLOR: #000000;
+    FONT-FAMILY: verdana, Arial, Helvetica, sans-serif
     MARGIN-TOP: 1.2em;
     FONT-SIZE: 115%;
     MARGIN-BOTTOM: 0.5em
 }
 H4
 {
+    FONT-WEIGHT: bold;
+    COLOR: #000000;
+    FONT-FAMILY: verdana, Arial, Helvetica, sans-serif
     MARGIN-TOP: 1.2em;
     FONT-SIZE: 100%;
     MARGIN-BOTTOM: 0.5em
 }
+
 P
 {
     FONT: x-small Verdana, Arial, Helvetica, sans-serif;
