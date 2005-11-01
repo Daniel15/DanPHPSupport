@@ -31,9 +31,9 @@ $database->connect($INFO['mysql_host'], $INFO['mysql_user'], $INFO['mysql_pass']
 error_reporting(E_ALL);
 set_error_handler("errormsg");
 
-define("DANPHPSUPPORT_DATE", "27/September/2005");
-define("DANPHPSUPPORT_VER", "0.1 Beta");
-define("DANPHPSUPPORT_BUILD", "1");
+define("DANPHPSUPPORT_DATE", "1/November/2005");
+define("DANPHPSUPPORT_VER", "0.2 Beta");
+define("DANPHPSUPPORT_BUILD", "2");
 
 //Load all settings from 'settings table
 $SETTINGS = "";
