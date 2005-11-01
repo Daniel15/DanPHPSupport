@@ -12,8 +12,8 @@
 |       header stays attached.      |
 \***********************************/
 
-// VERSION: 0.1
-// DATE: 27th September 2005
+// VERSION: 0.2
+// DATE: 31st October 2005
 
 //PAGE_TICKET_SUBMIT.PHP: Page to submit a new ticket
 
@@ -70,7 +70,7 @@ if (isset($_POST['submit2'])) {
 	 Subject: <input type='text' name='subject' size='40'><br>
 	 Category: <select name='category'>{$cat_list}</select><br>
 	 Severity: {$severities}<br>
-	 Message: <textarea rows='20' cols='70' name='message'>Type your message here</textarea>
+	 Message: <textarea rows='20' cols='70' name='message'>Type your message here</textarea><br>
 	 <input type='submit' value='Submit Ticket'>
 EOT;
 }

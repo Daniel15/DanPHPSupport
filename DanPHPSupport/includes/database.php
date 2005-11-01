@@ -49,7 +49,7 @@ class class_database {
 		return $this->query($query_fixed, $file, $line);
 	}
 	
-	function query($query_string, $file, $line) {
+	function query($query_string, $file = "Unknown", $line = "Unknown") {
 		$this->query = mysql_query($query_string, $this->connection) or trigger_error("Error while perfoming query '$query_string': ".mysql_error($this->connection)."<br><br>File: $file<br>Line: $line");
 		$this->query_count++;
 		return $this->query;

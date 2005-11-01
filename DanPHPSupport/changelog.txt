@@ -1,0 +1,18 @@
+CHANGELOG
+---------
+
+0.2 BETA: 1st November 2005
+ - Added auto-installation script!
+ - Added User Administration page
+ - Added Support Ticket Search feature
+ - Added Knowledge Base article editor
+ - Fixed problem with adding Knowledge base articles
+ - Edited 'Submit a Support Ticket' page so that submit button is underneath the textarea.
+ - Edited some text input fields to make them longer
+
+ALTER TABLE `ticket_messages` ADD FULLTEXT (
+`message` 
+)
+
+0.1 BETA: 27th September 2005 
+ - Initial Release (beta)

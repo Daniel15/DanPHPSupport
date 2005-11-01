@@ -12,8 +12,8 @@
 |       header stays attached.      |
 \***********************************/
 
-// VERSION: 0.1
-// DATE: 27th September 2005
+// VERSION: 0.2
+// DATE: 31st October 2005
 
 //PAGE_KB_ADD.PHP: Admin page - Add KB article
 
@@ -27,6 +27,9 @@ if (isset($_GET['submit'])) {
 	} elseif (!isset($_POST['body']) || $_POST['body'] == "") {
 		writeError("ERROR: No body text entered!");
 	} else {
+		$_POST['title'] = stripslashes($_POST['title']);
+		$_POST['body'] = stripslashes($_POST['body']);
+		
 		$database->safe_query("INSERT INTO kb_articles
 								  (title, body, categoryID)
 							       VALUES ('%s', '%s', %i)",
@@ -48,23 +51,4 @@ Category: <select name='category'>{$cat_list}</select><br>
 Contents: <textarea name='body' cols='50' rows='20'></textarea><br>
 <input type='submit' value='Add Article'>
 EOT;
-
-function updateKBCatCount($category) {
-	global $database;
-	
-	$database->safe_query("UPDATE kb_categories
-							  SET count=count+1
-							  WHERE ID=%i",
-						   array($category), __FILE__, __LINE__);
-	
-	$database->safe_query("SELECT parentID
-	 						  FROM kb_categories
-							  WHERE ID=%i",
-						  array($category), __FILE__, __LINE__);
-	
-	$row = $database->fetch_row();
-	if ($row['parentID'] != 0) {
-		updateKBCatCount($row['parentID']);
-	}
-}
 ?>

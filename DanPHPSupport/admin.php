@@ -127,4 +127,23 @@ EOT;
 	
 	return $cat_list;
 }
+
+function updateKBCatCount($category, $change = "1") {
+	global $database;
+	
+	$database->safe_query("UPDATE kb_categories
+							  SET count=count+%i
+							  WHERE ID=%i",
+						   array($change, $category), __FILE__, __LINE__);
+	
+	$database->safe_query("SELECT parentID
+	 						  FROM kb_categories
+							  WHERE ID=%i",
+						  array($category), __FILE__, __LINE__);
+	
+	$row = $database->fetch_row();
+	if ($row['parentID'] != 0) {
+		updateKBCatCount($row['parentID'], $change);
+	}
+}
 ?>
