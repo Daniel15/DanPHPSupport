@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>DanPHPSupport: Upgrading</title>
+<style type="text/css">
+<!--
+body,td,th {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+h1 {
+	text-align: center;
+}
+.style1 {
+	font-size: medium;
+	font-weight: bold;
+	text-decoration: underline;
+}
+h2 {
+	text-align: center;
+}
+.style3 {font-style: italic}
+.style4 {font-size: x-small}
+-->
+</style></head>
+
+<body>
+<div align="center">
+  <table width="95%" border="1" cellspacing="0" cellpadding="15">
+    <tr bgcolor="#EEEEEE">
+      <td><h1>DanPHPSupport</h1>
+        <h2>Upgrading from previous versions </h2>
+      <p>To upgrade from an old DanPHPSupport version to a newer one, you need to overwrite the old DanPHPSupport files with the new ones. However, some versions may have specific upgrade instructions, such as database edits, etc. Please read below to see what you need to to do upgrade your installation to a new version. </p>
+      <h3 align="left">DanPHPSupport 0.1 BETA --&gt; 0.3 BETA </h3>
+      <p align="left">These are the instructions to upgrade DanPHPSupport 0.1 BETA to 0.3 BETA. Once you have copied the new DanPHPSupport files over your old ones, run the following queries on your database:</p>
+      <pre align="left">ALTER TABLE ticket_messages ADD FULLTEXT (message);<br />INSERT INTO settings (field, value) VALUES ('timeZone', '10');<br />CREATE TABLE `ticket_canned` (
+    `ID` TINYINT UNSIGNED NOT NULL AUTO_INCREMENT ,
+    `name` VARCHAR( 80 ) NOT NULL ,
+    `text` TEXT NOT NULL ,
+    PRIMARY KEY ( `ID` ) 
+);
+       </pre>
+      <p align="left">You may do this in phpMyAdmin by choosing the database (on the right-hand side), and then clicking on 'SQL' at the top of the page.  </p>
+      <h3 align="left">DanPHPSupport 0.2 BETA  --&gt; 0.3 BETA</h3>
+      <p align="left">These are the instructions to upgrade DanPHPSupport 0.1 BETA to 0.3 BETA. Once you have copied the new DanPHPSupport files over your old ones, run the following queries on your database:</p>
+      <pre align="left">INSERT INTO settings (field, value) VALUES ('timeZone', '10');<br />CREATE TABLE `ticket_canned` (
+    `ID` TINYINT UNSIGNED NOT NULL AUTO_INCREMENT ,
+    `name` VARCHAR( 80 ) NOT NULL ,
+    `text` TEXT NOT NULL ,
+    PRIMARY KEY ( `ID` ) 
+);
+       </pre>
+      <p align="left">You may do this in phpMyAdmin by choosing the database (on the right-hand side), and then clicking on 'SQL' at the top of the page. </p>
+      <p align="left">&nbsp;</p>
+      <p align="left">--Daniel Lo Nigro<br />
+        <a href="http://www.dansoftaustralia.net/">DanSoft Australia          </a></p>
+	    
+      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td width="28%" valign="top"><div align="center"><span class="style3">Hosted by</span><br />
+            <a href="http://sourceforge.net"><img src="http://sourceforge.net/sflogo.php?group_id=149229&amp;type=4" width="125" height="37" border="0" alt="SourceForge.net Logo" /></a>
+            <br />
+            </div></td>
+            <td width="72%" valign="bottom"><div align="right" class="style4">Last Modified Monday, 19th December 2005 </div></td>
+          </tr>
+        </table>      </td>
+    </tr>
+  </table>
+</div>
+</body>
+</html>
