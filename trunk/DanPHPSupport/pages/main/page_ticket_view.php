@@ -12,8 +12,8 @@
 |       header stays attached.      |
 \***********************************/
 
-// VERSION: 0.1
-// DATE: 27th September 2005
+// VERSION: 0.3
+// DATE: 17th December 2005
 
 //PAGE_TICKET_VIEW.PHP: Page to View a ticket
 
@@ -69,7 +69,7 @@ if ($database->get_num_rows() == 0) {
 	$user = $row_user['firstName']." ".$row_user['lastName'];
 		
 	$status = getStatusName($row['status']);
-	$createdDate = date("l, jS F Y h:i:s A", $row['dateUNIX']+$INFO['time_offset']);
+	$createdDate = formatDate("l, jS F Y h:i:s A", $row['dateUNIX']);
 	pageHeader("View a Ticket");
 	
 	echo <<<EOT
@@ -105,7 +105,7 @@ EOT;
 	for ($x=1; $x <= $database->get_num_rows(); $x++) {
 		$row_msg = $database->fetch_row();
 		$row_msg['message'] = stripslashes($row_msg['message']);
-		$time = date("l, jS F Y h:i:s A", $row_msg['dateUNIX']+$INFO['time_offset']);
+		$time = formatDate("l, jS F Y h:i:s A", $row_msg['dateUNIX']);
 		echo <<<EOT
 <br><br><b>Message {$x}, posted by {$row_msg['firstName']} {$row_msg['lastName']} at {$time}</b><br>
 {$row_msg['message']}

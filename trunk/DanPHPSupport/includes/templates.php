@@ -92,7 +92,7 @@ function adminMenu($menuText = "") {
 
 function adminPageHeader($header = "", $cat = 0, $page = 0) {
 	echo pageHeader($header);
-	echo "<form action='admin.php?do=page&amp;cat={$cat}&amp;page={$page}&amp;submit=true' method='POST'>";
+	echo "<form action='admin.php?do=page&amp;cat={$cat}&amp;page={$page}&amp;submit=true' method='POST' name='adminForm'>";
 
 }
 

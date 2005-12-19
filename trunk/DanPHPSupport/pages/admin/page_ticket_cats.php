@@ -17,7 +17,7 @@
 
 //PAGE_TICKET_CATS.PHP: Admin Page - ticket category editor
 
-if (!defined('IN_ADMIN') || eregi("page_kb_cats.php",$_SERVER['PHP_SELF'])) {
+if (!defined('IN_ADMIN') || eregi("page_ticket_cats.php",$_SERVER['PHP_SELF'])) {
     die("You can't run this directly!");
 }
 

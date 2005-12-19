@@ -66,6 +66,7 @@ if(!isset($_GET['do']) || $_GET['do'] == "" || $_GET['do'] == "home") {
 		$menuText .= "<h2>{$CATS[$x]}</h2>";
 		for ($y=0; $y<count($PAGES[$x]); $y++) {
 			$menuText .= "<a target='body' href='admin.php?do=page&amp;cat={$x}&amp;page={$y}'>{$PAGES[$x][$y][0]}</a><br>";
+			//$menuText .= "<a target='body' href='admin.php?do=page2&amp;id={$PAGES[$x][$y][1]}'>{$PAGES[$x][$y][0]}</a><br>"; -- Links like this coming soon.
 		}
 	}
 	
@@ -78,7 +79,7 @@ if(!isset($_GET['do']) || $_GET['do'] == "" || $_GET['do'] == "home") {
 	
 	include "pages/admin/pages.php";
 	define("IN_ADMIN", true);
-	
+
 	adminPageHeader($PAGES[$_GET['cat']][$_GET['page']][0], $_GET['cat'], $_GET['page']);
 	include "pages/admin/page_".$PAGES[$_GET['cat']][$_GET['page']][1].".php";
 	adminPageFooter();
@@ -144,6 +145,16 @@ function updateKBCatCount($category, $change = "1") {
 	$row = $database->fetch_row();
 	if ($row['parentID'] != 0) {
 		updateKBCatCount($row['parentID'], $change);
+	}
+}
+
+function saveSettings() {
+	global $SETTINGS, $database;
+	foreach ($SETTINGS as $key => $value) {
+		$database->query("UPDATE settings
+		                    SET value = '{$value}'
+							WHERE field = '{$key}'",
+						  __FILE__, __LINE__);
 	}
 }
 ?>

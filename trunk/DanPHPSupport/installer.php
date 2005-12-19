@@ -93,6 +93,7 @@ EOT;
 		$database->query("INSERT INTO `settings` VALUES ('adminEmail', '{$_POST['email']}');", __FILE__, __LINE__);
 		$database->query("INSERT INTO `settings` VALUES ('emailNewTicket', '1');", __FILE__, __LINE__);
 		$database->query("INSERT INTO `settings` VALUES ('fromEmail', '{$_POST['support-email']}');", __FILE__, __LINE__);
+		$database->query("INSERT INTO `settings` VALUES ('timeZone', '10')", __FILE__, __LINE__);
 		
 		echo "<br>Creating ticket_categories table...";
 		$database->query("DROP TABLE IF EXISTS `ticket_categories`", __FILE__, __LINE__);
@@ -167,7 +168,14 @@ EOT;
 						   '{$_POST['user']}', '".md5($_POST['pass'])."', 1, NOW(), '');",
 						    __FILE__, __LINE__);
 							
-		//$database->query("", __FILE__, __LINE__);
+		echo "<br>Creating ticket_canned table...";
+		$database->query("DROP TABLE IF EXISTS `ticket_canned`", __FILE__, __LINE__);
+		$database->query("CREATE TABLE `ticket_canned` (
+						  `ID` TINYINT UNSIGNED NOT NULL AUTO_INCREMENT ,
+						  `name` VARCHAR(80) NOT NULL ,
+						  `text` TEXT NOT NULL ,
+						  PRIMARY KEY (`ID`))", __FILE__, __LINE__);
+						  
 		//$database->query("", __FILE__, __LINE__);
 		//$database->query("", __FILE__, __LINE__);
 		//$database->query("", __FILE__, __LINE__);
@@ -184,8 +192,6 @@ EOT;
 \$INFO['mysql_user'] = "{$_POST['db_user']}";		//Your MySQL username
 \$INFO['mysql_pass'] = "{$_POST['db_pass']}";		//Your MySQL password
 \$INFO['mysql_db'] = "{$_POST['db_name']}";	// The name of the database
-
-\$INFO['time_offset'] = (strtotime("21st May 2005 12:00:00 AM")) - 1116597600;
 ?>
 EOT;
 
@@ -194,7 +200,7 @@ EOT;
 		fwrite($file_handle, $settings_file) ;   
 		fclose($file_handle);  
 		
-		echo "SUCCESS!<br><br>DanPHPSupport install completed!<br><b>Please delete the installer.php file for security reasons!</b>";
+		echo "SUCCESS!<br><br>DanPHPSupport install completed!<br><h3><b><font color='red'>Note that if you don't delete the installer, someone can OVERWRITE your installation!</font></b></h3>So, please delete the installer.php file, for security reasons!";
 	}
 
 function writeInputField($name, $caption = "", $type = "text", $default = "", $extra = "") {

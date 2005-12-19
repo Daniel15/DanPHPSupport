@@ -12,8 +12,8 @@
 |       header stays attached.      |
 \***********************************/
 
-// VERSION: 0.1
-// DATE: 31st October 2005
+// VERSION: 0.3
+// DATE: 17th December 2005
 
 //PAGE_USERS.PHP: Admin page - User Administration
 
@@ -70,7 +70,7 @@ EOT;
 		$row = $database->fetch_row();
 		$users .= "
 	{$row['username']} ({$row['firstName']} {$row['lastName']}) - 
-	  Last Logged in on ".date("jS F Y", $row['lastLogin_UNIX']+$INFO['time_offset'])." - 
+	  Last Logged in on ".formatDate("jS F Y", $row['lastLogin_UNIX'])." - 
 	  ".adminLink("edit", "&amp;edit={$row['ID']}")."<!-- or 
 	  ".adminLink("delete", "&amp;delete={$row['ID']}")."-->
 	  <br>

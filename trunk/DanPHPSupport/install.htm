@@ -19,6 +19,9 @@ h1 {
 h2 {
 	text-align: center;
 }
+.style3 {font-style: italic}
+.style4 {font-size: x-small}
+.style5 {font-style: italic}
 -->
 </style></head>
 
@@ -28,35 +31,29 @@ h2 {
     <tr bgcolor="#EEEEEE">
       <td><h1>DanPHPSupport</h1>
         <h2>Installation Instructions</h2>
-      <p align="left">NOTE: I haven't had time to write some proper installation instructions, so this is definitely not complete. However, it should aid you in installing DanPHPSupport. In future versions of DanPHPSupport, there will be an automatic installer, but as this is a beta version, you have to install it manually.<em><strong> READ THIS CAREFULLY! </strong></em></p>
+      <p align="left"><em>NOTE: If you're upgrading from DanPHPSupport 0.1 or 0.2, then see the </em><span class="style5"><a href="upgrade.htm">upgrade.htm</a> file for more information on how to upgrade</span></p>
+      <p align="left">DanPHPSupport 0.3 Beta has an auto installer, so it is much easier to install! However, there are still a few things you need to do: <em><strong></strong></em></p>
       <p align="left"><span class="style1">1. Create the Database<br />
-        </span>You'll need to create a database for DanPHPSupport. You can do this in phpMyAdmin by using the 'Create New Database' option in it. Call the database 'support' (or something similar).</p>
-      <p align="left"><span class="style1">2. Import the database<br />
-        </span>The DanPHPSupport database is inside the 'install.sql' file that comes with DanPHPSupport. Use phpMyAdmin to import this SQL file (click on the database on the left side of the screen, then click on 'SQL' at the top. Choose the install.sql database using the 'Browse...' or 'Choose' button at the bottom.</p>
-      <p align="left"><span class="style1">3. Change the admin user settings (including password)</span><br />
-        Unfortunately, there isn't a users control panel in DanPHPSupport (yet). So, to change your password, make sure you're still in phpMyAdmin and click on the DanPHPSupport database on the side. 
-        Click on the 'users' table and when it loads, click 'Browse' at the top (next to 'Structure'). Click on the pencil icon next to the Default Administrator. This will allow you to edit it. Change the First Name, Last Name, E-Mail and Username to whatever you want. For the password box, type in a new password and click 'MD5' in the dropdown box next to it. When you click 'Go' at the bottom, this will encrypt your password</p>
-      <p align="left"><span class="style1">4. Change some other settings</span><br />
-        You also need to change a few other settings. Click on the 'settings' table and then click 'Browse' (next to Structure). Tick the 'adminEmail' and 'fromEmail' fields, and then click on the pencil icon next to '<em>With Selected:</em>'. Set the following values:<br />
-        - adminEmail - Your email address<br /> 
-        - fromEmail - The email address the support notification come from (when you reply to someone's ticket). This shouldn't be a real email address (eg. make it something like support-noreply@example.com, replacing example.com with your domain)</p>
-      <p align="left"><span class="style1">5. Set the DanPHPSupport settings(/includes/settings.php)<br />
-        </span>You'll need to tell DanPHPSupport what your database settings are. Open the includes/settings.php file, and change the settings to suit your configuration.</p>
-      <p align="left"><span class="style1">6. Open the DanPHPSupport administration panel</span><br />
+        </span>You'll need to create a database for DanPHPSupport. You can do this in cPanel by going to the '<em>MySQL Databases</em>' option. You can also do this from within phpMyAdmin by using the 'Create New Database' option in it. Call the database 'support' (or something similar). If you created the database using cPanel, remember to create a database user and add it to the database. </p>
+      <p align="left"><span class="style1">2. 'CHMOD' includes/settings.php to 0777 </span><br />
+        In order to save your database settings, the DanPHPSupport installer needs to write to your settings.php file. To make the file writable, use your FTP client to 'CHMOD' it to 0777. This feature might be called any of the following: 'CHMOD', 'File Permissions', 'File Modes' or similar. </p>
+      <p align="left"><span class="style1">3. Run the installer! </span><br />
+        Now, point your browser to the installer.php file, for example, if you installed DanPHPSupport at http://www.example.com/support/, then you would go to http://www.example.com/support/installer.php. Follow the instuctions within the installer. </p>
+      <p align="left"><span class="style1">4. Open the DanPHPSupport administration panel</span><br />
         Go to the /admin.php address, for example if you installed DanPHPSupport at http://www.example.com/support/ then you should go to http://www.example.com/support/admin.php. Add some support ticket categories and knowledgebase categories</p>
       <p align="left">You're done! Test out your new DanPHPSupport installation and see if it works properly.</p>
-      <p align="left">Questions? Please see the <a href="http://DanPHPSupport.dansoftaustralia.net/">DanPHPSupport webpage</a> and our <a href="http://sourceforge.net/projects/danphpsupport/">SourceForge Project page</a> </p>
+      <p align="left">Questions? Please see the <a href="http://DanPHPSupport.dansoftaustralia.net/">DanPHPSupport webpage</a> and our <a href="http://sourceforge.net/projects/danphpsupport/">SourceForge Project page</a></p>
       <p align="left">&nbsp;</p>
       <p align="left">--Daniel Lo Nigro<br />
         <a href="http://www.dansoftaustralia.net/">DanSoft Australia          </a></p>
 	    
       <table width="100%" border="0" cellspacing="0" cellpadding="0">
         <tr>
-          <td width="50%" valign="top"><div align="center"><span class="style3">Hosted by</span><br />
+          <td width="28%" valign="top"><div align="center"><span class="style3">Hosted by</span><br />
             <a href="http://sourceforge.net"><img src="http://sourceforge.net/sflogo.php?group_id=149229&amp;type=4" width="125" height="37" border="0" alt="SourceForge.net Logo" /></a>
             <br />
             </div></td>
-            <td width="50%" valign="bottom"><div align="right"><span class="style2">Last Modified Wednesday September 28, 2005</span></div></td>
+            <td width="72%" valign="bottom"><div align="right" class="style4">Last Modified Monday, 19th December 2005 </div></td>
           </tr>
         </table>      </td>
     </tr>

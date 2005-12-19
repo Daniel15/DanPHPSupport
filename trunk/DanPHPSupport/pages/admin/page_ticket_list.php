@@ -12,8 +12,8 @@
 |       header stays attached.      |
 \***********************************/
 
-// VERSION: 0.1
-// DATE: 27th September 2005
+// VERSION: 0.3
+// DATE: 17th December 2005
 
 //PAGE_TICKET_LIST.PHP: Admin Page - List of tickets (Open/Closed/Pending)
 
@@ -57,7 +57,7 @@ for ($x=0; $x < $database->get_num_rows(); $x++) {
 	$tickets .= "
 <tr bgcolor='{$alternating}'>
  <td width='7%'>{$row['ID']}</td>
- <td width='100'>".date("Y-m-d h:i:s A", $row['dateUNIX']+$INFO['time_offset'])."</td>
+ <td width='100'>".formatDate("Y-m-d h:i:s A", $row['dateUNIX'])."</td>
 <!-- <td>".getStatusName($row['status'])."</td> -->
  <td><a href='admin.php?do=page&amp;cat=2&amp;page=4&amp;id={$row['ID']}'>{$row['subject']}</a></td>
  <td>{$row['catName']}</td>
