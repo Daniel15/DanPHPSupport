@@ -1,5 +1,12 @@
 CHANGELOG
 ---------
+Numbers on the left indicate the ID on the DanSoft Australia bug tracker.
+
+DanPHPSupport - 0.3 Beta
+========================
+- 0000004: [New Feature] Version information in admin panel (daniel15)
+- 0000003: [New Feature] Canned Responses (daniel15)
+- 0000001: [New Feature] Time Zone Support (daniel15)
 
 0.2 BETA: 1st November 2005
  - Added auto-installation script!

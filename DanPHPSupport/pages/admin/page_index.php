@@ -12,15 +12,15 @@
 |       header stays attached.      |
 \***********************************/
 
-// VERSION: 0.1
-// DATE: 27th September 2005
+// VERSION: 0.3
+// DATE: 19th December 2005
 
 //PAGE_INDEX.PHP: The administration index page
 
 if (!defined('IN_ADMIN') || eregi("page_index.php",$_SERVER['PHP_SELF'])) {
     die("You can't run this directly!");
 }
-$last_time = date("jS F Y h:i:s A", $_SESSION['admin_lastlogin']+$INFO['time_offset']);
+$last_time = formatDate("jS F Y h:i:s A", $_SESSION['admin_lastlogin']);
 
 //various statistics queries:
 
@@ -59,7 +59,9 @@ $database->query("SELECT status
 				__FILE__, __LINE__);
 $totalclosed = $database->get_num_rows();
 
-
+$version = DANPHPSUPPORT_VER;
+$build = DANPHPSUPPORT_BUILD;
+$rel_date = DANPHPSUPPORT_DATE;
 echo <<<EOT
 Welcome to your administration panel, {$_SESSION['admin_name']}! From here, you can administer your online support desk.<br><br>
 <b>You last visited at: </b> {$last_time}<br><br>
@@ -67,6 +69,10 @@ Welcome to your administration panel, {$_SESSION['admin_name']}! From here, you 
 <b>Number of new replies</b> since your last visit: {$replycount}<br><br>
 <b>Total open (new) tickets:</b> {$totalopen}<br>
 <b>Total pending tickets:</b> {$totalpending}<br>
-<b>Total closed tickets:</b> {$totalclosed}<br>
+<b>Total closed tickets:</b> {$totalclosed}<br><br>
+<b>Installed version: </b><span id='yourVersion'>{$version}</span> (Build <span id='yourBuild'>{$build}</span>) released on {$rel_date}<br>
+<span id='currVersion'>Unable to connect to DanSoft Australia website to check version!</span>
+
+<script language="JavaScript" src="http://danphpsupport.dansoftaustralia.net/updates/dps-version.js?build={$build}"></script>
 EOT;
 ?>

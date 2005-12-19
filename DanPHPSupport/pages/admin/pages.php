@@ -12,8 +12,8 @@
 |       header stays attached.      |
 \***********************************/
 
-// VERSION: 0.2
-// DATE: 31st October 2005
+// VERSION: 0.3
+// DATE: 17th December 2005
 
 //PAGES.PHP: The pages in the admin panel
 
@@ -60,7 +60,7 @@ $PAGES = array(
 			   			  0 => array("Control panel index", "index"),
 			   			  ),
 			   1 => array(
-			   			  0 => array("General Configuration", "not_imp"),
+			   			  0 => array("General Configuration", "general"),
 						  1 => array("Users", "users"),
 						  ),
 			   2 => array(
@@ -71,6 +71,7 @@ $PAGES = array(
 						  4 => array("", "ticket_view"), //used for blank line in menu, it also has the use of viewing a ticket
 						  5 => array("Categories", "ticket_cats"),
 						  6 => array("Severities", "ticket_sevs"),
+						  7 => array("Canned Responses", "ticket_canned"),
 						  ),
 			   3 => array(
 			   			  0 => array("Add Article", "kb_add"),

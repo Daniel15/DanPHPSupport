@@ -12,8 +12,8 @@
 |       header stays attached.      |
 \***********************************/
 
-// VERSION: 0.1
-// DATE: 26th September 2005
+// VERSION: 0.3
+// DATE: 19th December 2005
 
 //LIBRARY.PHP: General functions used by most code
 //             Also see templates.php
@@ -24,6 +24,7 @@ require "database.php";
 require "templates.php";
 
 error_reporting(E_ALL);
+ini_set("session.gc_maxlifetime","14400");	
 
 $database = new class_database();
 $database->connect($INFO['mysql_host'], $INFO['mysql_user'], $INFO['mysql_pass'], $INFO['mysql_db']);
@@ -31,9 +32,9 @@ $database->connect($INFO['mysql_host'], $INFO['mysql_user'], $INFO['mysql_pass']
 error_reporting(E_ALL);
 set_error_handler("errormsg");
 
-define("DANPHPSUPPORT_DATE", "1/November/2005");
-define("DANPHPSUPPORT_VER", "0.2 Beta");
-define("DANPHPSUPPORT_BUILD", "2");
+define("DANPHPSUPPORT_DATE", "19/December/2005");
+define("DANPHPSUPPORT_VER", "0.3 Beta");
+define("DANPHPSUPPORT_BUILD", "3");
 
 //Load all settings from 'settings table
 $SETTINGS = "";
@@ -90,11 +91,16 @@ function errormsg($errno, $errmsg, $filename, $linenum) {
 } //end error handler
 
 function footer() {
-	global $start_time;
-	global $database;
+	global $start_time, $database, $SETTINGS;
+	
+	$current_timeZone = ($SETTINGS['timeZone'] >= 0 ? "+".$SETTINGS['timeZone'] : $SETTINGS['timeZone']);
+	$current_time = formatDate("h:i:s A", time());
+
 	$duration = microtime_diff($start_time, microtime());
 	$duration = sprintf("%0.3f", $duration);
-	echo "<p align='right'><font size='-2'>Generation time: $duration seconds. Database queries: ".$database->get_query_cnt()."<br> Powered by <a href='http://danphpsupport.dansoftaustralia.net/'>DanPHPSupport</a> version ".DANPHPSUPPORT_VER." (".DANPHPSUPPORT_DATE.") by <a href='http://www.dansoftaustralia.net/'>DanSoft Australia</a></font></p>";
+	echo "<p align='right'><font size='-2'>All times are GMT{$current_timeZone}. The current time is {$current_time}<br>
+	      Generation time: $duration seconds. Database queries: ".$database->get_query_cnt()."<br>
+		  Powered by <a href='http://danphpsupport.dansoftaustralia.net/'>DanPHPSupport</a> version ".DANPHPSUPPORT_VER." (".DANPHPSUPPORT_DATE.") by <a href='http://www.dansoftaustralia.net/'>DanSoft Australia</a></font></p>";
 }
 
 //timer function
@@ -180,5 +186,11 @@ EOT;
 	$severities .= "</select>";
 	
 	return $severities;
+}
+
+function formatDate($format, $date) {
+	global $SETTINGS;
+	$time_zone = $SETTINGS['timeZone'] * 3600;
+	return gmdate($format, $date+$time_zone);
 }
 ?>

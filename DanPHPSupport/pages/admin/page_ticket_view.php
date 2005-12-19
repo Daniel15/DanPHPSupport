@@ -12,8 +12,8 @@
 |       header stays attached.      |
 \***********************************/
 
-// VERSION: 0.1
-// DATE: 27th September 2005
+// VERSION: 0.3
+// DATE: 17th December 2005
 
 //PAGE_TICKET_VIEW.PHP: Admin Page - View a ticket
 
@@ -120,7 +120,7 @@ if ($database->get_num_rows() == 0) {
 	$user = $row_user['firstName']." ".$row_user['lastName'];
 		
 	$status = getStatusName($row['status']);
-	$createdDate = date("l, jS F Y h:i:s A", $row['dateUNIX']+$INFO['time_offset']);
+	$createdDate = formatDate("l, jS F Y h:i:s A", $row['dateUNIX']);
 	pageHeader("View a Ticket");
 	
 	echo <<<EOT
@@ -157,7 +157,7 @@ EOT;
 	for ($x=1; $x <= $database->get_num_rows(); $x++) {
 		$row_msg = $database->fetch_row();
 		$row_msg['message'] = stripslashes($row_msg['message']);
-		$time = date("l, jS F Y h:i:s A", $row_msg['dateUNIX']+$INFO['time_offset']);
+		$time = formatDate("l, jS F Y h:i:s A", $row_msg['dateUNIX']);
 		echo <<<EOT
 <b>Message {$x}, posted by {$row_msg['firstName']} {$row_msg['lastName']} at {$time}</b><br>
 {$row_msg['message']}<br><br>
@@ -166,17 +166,53 @@ EOT;
 	if ($owner == "nobody") {
 		echo adminLink("Take Ownership", "&amp;id={$row['ID']}&amp;own=true");
 	}
+	
+	if (isset($_GET['canned']) && $_GET['canned'] != "") {
+		$database->safe_query("SELECT text
+		                         FROM ticket_canned
+								 WHERE ID = %i",
+								array($_GET['canned']), __FILE__, __LINE__);
+		$row_canned = $database->fetch_row();
+		$text = stripslashes($row_canned['text']);
+	} else {
+		$text = "";
+	}
+	
+	$canned_list = "";
+	$results_canned = $database->query("SELECT ID, name FROM ticket_canned");
+	for ($x=0; $x < $database->get_num_rows(); $x++) {
+		$row_canned = $database->fetch_row();
+		$row_canned['name'] = stripslashes($row_canned['name']);
+		
+		$canned_list .= "<option value='{$row_canned['ID']}'>{$row_canned['name']}</option>";
+	}
+		
+		
 	echo <<<EOT
 <br><br><br>
  <b>Post a new message:</b><br>
  <input type='hidden' name='post' value='{$row['ID']}'>
- <textarea name='message' cols='70' rows='10'>Type your message here</textarea><br>
+ <textarea name='message' cols='70' rows='10'>{$text}</textarea><br>
  Change status to: 
   <select name='status'>
    <option value='0'>Open</option>
    <option value='1' selected>Pending</option>
    <option value='2'>Closed</option>
   </select><br>
+  
+  <script language='JavaScript'>
+	function doCanned(){	
+		var canned = document.adminForm.canned;
+		var url = canned.options[canned.selectedIndex].value;
+
+		window.location.href = "admin.php?do=page&amp;cat={$_GET['cat']}&amp;page={$_GET['page']}&amp;id={$_GET['id']}&amp;canned="+url; 
+	}
+  </script>
+  Insert canned response into 'New Message' box:
+    <select name='canned'>
+	 {$canned_list}
+	</select>
+	<input type="button" onClick="javascript:doCanned()" value="go"><br>
  <input type='submit' value='Post Message'>
 
 

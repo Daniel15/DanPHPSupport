@@ -12,8 +12,8 @@
 |       header stays attached.      |
 \***********************************/
 
-// VERSION: 0.2
-// DATE: 31st October 2005
+// VERSION: 0.3
+// DATE: 17th December 2005
 
 //PAGE_TICKET_SEARCH.PHP: Admin Page - Search Support Tickets
 
@@ -50,7 +50,7 @@ EOT;
 		for ($x=0; $x < $results_count; $x++) {
 			$row = $database->fetch_row();
 			$row['score'] = round($row['score'] * 100, 2); 
-			$date = date("Y-m-d h:i:s A", $row['dateUNIX']+$INFO['time_offset']);
+			$date = formatDate("Y-m-d h:i:s A", $row['dateUNIX']);
 			
 			echo <<<EOT
 	<tr>
