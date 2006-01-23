@@ -1,18 +1,15 @@
-BODY
-{
+BODY {
     FONT: x-small Verdana, Arial, Helvetica, sans-serif;
     BACKGROUND-COLOR: #ffffff
 }
-H1
-{
+H1 {
     FONT-WEIGHT: bold;
     COLOR: #000000;
     FONT-FAMILY: verdana, Arial, Helvetica, sans-serif
     FONT-SIZE: 145%;
     MARGIN-BOTTOM: 0.5em
 }
-H2
-{
+H2 {
     FONT-WEIGHT: bold;
     COLOR: #000000;
     FONT-FAMILY: verdana, Arial, Helvetica, sans-serif
@@ -20,8 +17,7 @@ H2
     FONT-SIZE: 125%;
     MARGIN-BOTTOM: 0.5em
 }
-H3
-{
+H3 {
     FONT-WEIGHT: bold;
     COLOR: #000000;
     FONT-FAMILY: verdana, Arial, Helvetica, sans-serif
@@ -29,8 +25,7 @@ H3
     FONT-SIZE: 115%;
     MARGIN-BOTTOM: 0.5em
 }
-H4
-{
+H4 {
     FONT-WEIGHT: bold;
     COLOR: #000000;
     FONT-FAMILY: verdana, Arial, Helvetica, sans-serif
@@ -39,75 +34,37 @@ H4
     MARGIN-BOTTOM: 0.5em
 }
 
-P
-{
+P {
     FONT: x-small Verdana, Arial, Helvetica, sans-serif;
     COLOR: #000000
 }
-CODE
-{
+CODE {
     FONT: 100% "Courier New", Courier, mono
 }
-TD
-{
+TD {
     FONT-SIZE: x-small
 }
-A:link
-{
+A:link {
     COLOR: #0000ff
 }
-A:visited
-{
+A:visited {
     COLOR: #660066
 }
-A:hover
-{
+A:hover {
     COLOR: #ff9900
 }
-.label
-{
-    FONT-WEIGHT: bold
-}
-.mini
-{
-    FONT-SIZE: smaller
-}
-LI
-{
-    MARGIN-TOP: 0.75em;
-    MARGIN-BOTTOM: 0.75em
-}
-UL
-{
-    LIST-STYLE-TYPE: disc
-}
-UL UL
-{
-    MARGIN-TOP: 1em;
-    MARGIN-BOTTOM: 1em
-}
-OL OL
-{
-    MARGIN-TOP: 1em;
-    MARGIN-BOTTOM: 1em
-}
-OL UL
-{
-    MARGIN-TOP: 1em;
-    MARGIN-BOTTOM: 1em
-}
-UL OL
-{
-    MARGIN-TOP: 1em;
-    MARGIN-BOTTOM: 1em
-}
-LI P
-{
-    MARGIN-TOP: 0.5em;
-    MARGIN-BOTTOM: 0.5em
-}
-SUP
-{
-    FONT-SIZE: smaller;
-    TEXT-DECORATION: none
+
+.messageBox {
+	border-top-width: 1px;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	border-top-style: dotted;
+	border-right-style: dotted;
+	border-bottom-style: dotted;
+	border-left-style: dotted;
+	width: 100%;
+	overflow: auto;
+	background-color: #EFEFEF;
+	padding: 8px;
 }

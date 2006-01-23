@@ -2,11 +2,17 @@ CHANGELOG
 ---------
 Numbers on the left indicate the ID on the DanSoft Australia bug tracker.
 
+DanPHPSupport - 0.4 BETA
+========================
+- 0000017: [Bug] Email admin when ticket is updated (daniel15)
+- 0000018: [New Feature] Better formatting on View Ticket pages (daniel15)
+- 0000019: [Bug] Messages not properly escaped (daniel15)
+
 DanPHPSupport - 0.3 Beta
 ========================
-- 0000004: [New Feature] Version information in admin panel (daniel15)
-- 0000003: [New Feature] Canned Responses (daniel15)
-- 0000001: [New Feature] Time Zone Support (daniel15)
+- [New Feature] Version information in admin panel (daniel15)
+- [New Feature] Canned Responses (daniel15)
+- [New Feature] Time Zone Support (daniel15)
 
 0.2 BETA: 1st November 2005
  - Added auto-installation script!

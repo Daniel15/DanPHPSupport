@@ -182,7 +182,7 @@ EOT;
 		//$database->query("", __FILE__, __LINE__);
 		//$database->query("", __FILE__, __LINE__);
 		
-		echo "<br>DONE!<br><br>Writing database settings to 'settings.php'...";
+		echo "<br>DONE!<br><br>Writing database settings to 'settings-new.php'...";
 		
 		$settings_file = <<<EOT
 <?php
@@ -195,12 +195,11 @@ EOT;
 ?>
 EOT;
 
-		$file_handle = fopen("includes/settings.php","w");
-		echo ($file_handle === false);
+		$file_handle = fopen("includes/settings-new.php","w");
 		fwrite($file_handle, $settings_file) ;   
 		fclose($file_handle);  
 		
-		echo "SUCCESS!<br><br>DanPHPSupport install completed!<br><h3><b><font color='red'>Note that if you don't delete the installer, someone can OVERWRITE your installation!</font></b></h3>So, please delete the installer.php file, for security reasons!";
+		echo "SUCCESS!<br><br>DanPHPSupport install completed!<br><h3><b><font color='red'>Please rename the 'settings-new.php' file to 'settings.php'(see the 'includes' directory), otherwise your DanPHPSupport installation <b>will not work</b>!</font>";
 	}
 
 function writeInputField($name, $caption = "", $type = "text", $default = "", $extra = "") {

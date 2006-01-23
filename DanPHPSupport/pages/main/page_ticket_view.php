@@ -12,8 +12,8 @@
 |       header stays attached.      |
 \***********************************/
 
-// VERSION: 0.3
-// DATE: 17th December 2005
+// VERSION: 0.4 BETA
+// DATE: 22nd January 2006
 
 //PAGE_TICKET_VIEW.PHP: Page to View a ticket
 
@@ -107,8 +107,11 @@ EOT;
 		$row_msg['message'] = stripslashes($row_msg['message']);
 		$time = formatDate("l, jS F Y h:i:s A", $row_msg['dateUNIX']);
 		echo <<<EOT
-<br><br><b>Message {$x}, posted by {$row_msg['firstName']} {$row_msg['lastName']} at {$time}</b><br>
+<br>
+<div class="messageBox">
+<b>Message {$x}, posted by {$row_msg['firstName']} {$row_msg['lastName']} at {$time}</b><br>
 {$row_msg['message']}
+</div>
 EOT;
 	}
 	if ($row['status'] == 2) {
