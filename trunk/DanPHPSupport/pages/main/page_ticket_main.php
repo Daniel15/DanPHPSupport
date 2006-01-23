@@ -12,8 +12,8 @@
 |       header stays attached.      |
 \***********************************/
 
-// VERSION: 0.3
-// DATE: 17th December 2005
+// VERSION: 0.4 Beta
+// DATE: 22nd January 2006
 
 //PAGE_TICKET_MAIN.PHP: Main ticket page.
 
@@ -50,7 +50,7 @@ for ($x=0; $x < $database->get_num_rows(); $x++) {
  <td width='7%'>{$row['ID']}</td>
  <td width='100'>".formatDate("Y-m-d h:i:s A", $row['dateUNIX'])."</td>
  <td>".getStatusName($row['status'])."</td>
- <td><a href='index.php?page=ticket_view&amp;id={$row['ID']}'>{$row['subject']}</a></td>
+ <td align='center'><a href='index.php?page=ticket_view&amp;id={$row['ID']}'>{$row['subject']}</a></td>
  <td>{$row['catName']}</td>
  <td><font color='{$row['colour']}'><b>{$row['sevName']}</b></font></td>
  <td>{$row['replyCount']}</td>

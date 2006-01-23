@@ -31,8 +31,8 @@ h2 {
       <td><h1>DanPHPSupport</h1>
         <h2>Upgrading from previous versions </h2>
       <p>To upgrade from an old DanPHPSupport version to a newer one, you need to overwrite the old DanPHPSupport files with the new ones. However, some versions may have specific upgrade instructions, such as database edits, etc. Please read below to see what you need to to do upgrade your installation to a new version. </p>
-      <h3 align="left">DanPHPSupport 0.1 BETA --&gt; 0.3 BETA </h3>
-      <p align="left">These are the instructions to upgrade DanPHPSupport 0.1 BETA to 0.3 BETA. Once you have copied the new DanPHPSupport files over your old ones, run the following queries on your database:</p>
+      <h3 align="left">DanPHPSupport 0.1 BETA --&gt; 0.4 BETA </h3>
+      <p align="left">These are the instructions to upgrade DanPHPSupport 0.1 BETA to 0.4 BETA. Once you have copied the new DanPHPSupport files over your old ones, run the following queries on your database:</p>
       <pre align="left">ALTER TABLE ticket_messages ADD FULLTEXT (message);<br />INSERT INTO settings (field, value) VALUES ('timeZone', '10');<br />CREATE TABLE `ticket_canned` (
     `ID` TINYINT UNSIGNED NOT NULL AUTO_INCREMENT ,
     `name` VARCHAR( 80 ) NOT NULL ,
@@ -41,8 +41,8 @@ h2 {
 );
        </pre>
       <p align="left">You may do this in phpMyAdmin by choosing the database (on the right-hand side), and then clicking on 'SQL' at the top of the page.  </p>
-      <h3 align="left">DanPHPSupport 0.2 BETA  --&gt; 0.3 BETA</h3>
-      <p align="left">These are the instructions to upgrade DanPHPSupport 0.1 BETA to 0.3 BETA. Once you have copied the new DanPHPSupport files over your old ones, run the following queries on your database:</p>
+      <h3 align="left">DanPHPSupport 0.2 BETA  --&gt; 0.4 BETA</h3>
+      <p align="left">These are the instructions to upgrade DanPHPSupport 0.2 BETA to 0.4 BETA. Once you have copied the new DanPHPSupport files over your old ones, run the following queries on your database:</p>
       <pre align="left">INSERT INTO settings (field, value) VALUES ('timeZone', '10');<br />CREATE TABLE `ticket_canned` (
     `ID` TINYINT UNSIGNED NOT NULL AUTO_INCREMENT ,
     `name` VARCHAR( 80 ) NOT NULL ,
@@ -51,6 +51,9 @@ h2 {
 );
        </pre>
       <p align="left">You may do this in phpMyAdmin by choosing the database (on the right-hand side), and then clicking on 'SQL' at the top of the page. </p>
+      <p align="left">&nbsp;</p>
+      <h3 align="left">DanPHPSupport 0.3 BETA --&gt; 0.4 BETA </h3>
+      <p align="left">This is really easy: Just copy all the new files to your installation directory, overwriting the old files. That's all! </p>
       <p align="left">&nbsp;</p>
       <p align="left">--Daniel Lo Nigro<br />
         <a href="http://www.dansoftaustralia.net/">DanSoft Australia          </a></p>
@@ -61,7 +64,7 @@ h2 {
             <a href="http://sourceforge.net"><img src="http://sourceforge.net/sflogo.php?group_id=149229&amp;type=4" width="125" height="37" border="0" alt="SourceForge.net Logo" /></a>
             <br />
             </div></td>
-            <td width="72%" valign="bottom"><div align="right" class="style4">Last Modified Monday, 19th December 2005 </div></td>
+            <td width="72%" valign="bottom"><div align="right" class="style4">Last Modified 22nd January 2006</div></td>
           </tr>
         </table>      </td>
     </tr>

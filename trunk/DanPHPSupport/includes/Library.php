@@ -12,8 +12,8 @@
 |       header stays attached.      |
 \***********************************/
 
-// VERSION: 0.3
-// DATE: 19th December 2005
+// VERSION: 0.4 BETA
+// DATE: 22nd January 2006
 
 //LIBRARY.PHP: General functions used by most code
 //             Also see templates.php
@@ -24,7 +24,7 @@ require "database.php";
 require "templates.php";
 
 error_reporting(E_ALL);
-ini_set("session.gc_maxlifetime","14400");	
+@ini_set("session.gc_maxlifetime","14400");	
 
 $database = new class_database();
 $database->connect($INFO['mysql_host'], $INFO['mysql_user'], $INFO['mysql_pass'], $INFO['mysql_db']);
@@ -32,9 +32,9 @@ $database->connect($INFO['mysql_host'], $INFO['mysql_user'], $INFO['mysql_pass']
 error_reporting(E_ALL);
 set_error_handler("errormsg");
 
-define("DANPHPSUPPORT_DATE", "19/December/2005");
-define("DANPHPSUPPORT_VER", "0.3 Beta");
-define("DANPHPSUPPORT_BUILD", "3");
+define("DANPHPSUPPORT_DATE", "22/January/2006");
+define("DANPHPSUPPORT_VER", "0.4 Beta");
+define("DANPHPSUPPORT_BUILD", "4");
 
 //Load all settings from 'settings table
 $SETTINGS = "";

@@ -12,8 +12,8 @@
 |       header stays attached.      |
 \***********************************/
 
-// VERSION: 0.2
-// DATE: 31st October 2005
+// VERSION: 0.4 BETA
+// DATE: 22nd January 2006
 
 //PAGE_TICKET_SUBMIT.PHP: Page to submit a new ticket
 
@@ -46,7 +46,7 @@ if (isset($_POST['submit2'])) {
 		$database->safe_query("INSERT INTO ticket_messages
 								  (date, message, ticketID, userID)
 								  VALUES (NOW(), '%s', %i, %i)",
-							  array(nl2br($_POST['message']), $ticket_id, $_SESSION['support_id']),
+							  array(nl2br(htmlentities($_POST['message'])), $ticket_id, $_SESSION['support_id']),
 							  __FILE__, __LINE__);
 							  
 		$message = newTicketMail($_SESSION['support_id'], stripslashes($_POST['subject']), $_POST['severity'],
