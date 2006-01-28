@@ -2,6 +2,10 @@ CHANGELOG
 ---------
 Numbers on the left indicate the ID on the DanSoft Australia bug tracker.
 
+DanPHPSupport - 0.41 BETA
+=========================
+- 0000020: [Bug] Category names aren't escaped correctly (daniel15)
+
 DanPHPSupport - 0.4 BETA
 ========================
 - 0000017: [Bug] Email admin when ticket is updated (daniel15)
