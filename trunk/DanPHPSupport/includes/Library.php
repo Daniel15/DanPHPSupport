@@ -12,8 +12,8 @@
 |       header stays attached.      |
 \***********************************/
 
-// VERSION: 0.4 BETA
-// DATE: 22nd January 2006
+// VERSION: 0.41 Beta
+// DATE: 28th January 2006
 
 //LIBRARY.PHP: General functions used by most code
 //             Also see templates.php
@@ -32,9 +32,9 @@ $database->connect($INFO['mysql_host'], $INFO['mysql_user'], $INFO['mysql_pass']
 error_reporting(E_ALL);
 set_error_handler("errormsg");
 
-define("DANPHPSUPPORT_DATE", "22/January/2006");
-define("DANPHPSUPPORT_VER", "0.4 Beta");
-define("DANPHPSUPPORT_BUILD", "4");
+define("DANPHPSUPPORT_DATE", "28/January/2006");
+define("DANPHPSUPPORT_VER", "0.41 Beta");
+define("DANPHPSUPPORT_BUILD", "5");
 
 //Load all settings from 'settings table
 $SETTINGS = "";
@@ -120,6 +120,8 @@ function showTicketCategories($printout = false, $order = "ID ASC", $selected_id
 	
 	for ($x=0; $x < $database->get_num_rows($results); $x++) {
 		$row = $database->fetch_row($results);
+		$row['name'] = stripslashes($row['name']);
+		
 		$edit_link = "<a href='admin.php?do=page&amp;cat=2&amp;page=5&amp;edit={$row['ID']}'>edit</a>";//adminLink("edit", "&amp;edit={$row['ID']}");
 		
 		if ($printout == true) echo <<<EOT

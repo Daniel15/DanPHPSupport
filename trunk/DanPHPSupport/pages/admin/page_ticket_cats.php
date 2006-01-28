@@ -12,8 +12,8 @@
 |       header stays attached.      |
 \***********************************/
 
-// VERSION: 0.1
-// DATE: 27th September 2005
+// VERSION: 0.41 Beta
+// DATE: 28th January 2006
 
 //PAGE_TICKET_CATS.PHP: Admin Page - ticket category editor
 
@@ -38,11 +38,12 @@ if (isset($_POST['add'])) {
 										WHERE ID = %s",
 									  array($_GET['edit']), __FILE__, __LINE__);
 	$row = $database->fetch_row();
+	$row['name'] = stripslashes($row['name']);
 
 	echo <<<EOT
 <h2>Editing category #{$row['ID']}</h2>
  <input type='hidden' name='edit2' value='{$row['ID']}'>
- Name: <input type='text' name='cat_name' value='{$row['name']}'><br>
+ Name: <input type='text' name='cat_name' value="{$row['name']}"><br>
  <input type='submit' value='edit'> 
 EOT;
 } elseif (isset($_POST['edit2'])) {

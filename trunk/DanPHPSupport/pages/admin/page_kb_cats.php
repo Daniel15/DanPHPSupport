@@ -12,8 +12,8 @@
 |       header stays attached.      |
 \***********************************/
 
-// VERSION: 0.1
-// DATE: 27th September 2005
+// VERSION: 0.41 Beta
+// DATE: 28th January 2006
 
 //PAGE_KB_CATS.PHP: Admin Page - KB category editor
 
