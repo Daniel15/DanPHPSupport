@@ -208,7 +208,7 @@ EOT;
 		var canned = document.adminForm.canned;
 		var url = canned.options[canned.selectedIndex].value;
 
-		window.location.href = "admin.php?do=page&amp;cat={$_GET['cat']}&amp;page={$_GET['page']}&amp;id={$_GET['id']}&amp;canned="+url; 
+		window.location.href = "admin.php?do=page&cat={$_GET['cat']}&page={$_GET['page']}&id={$_GET['id']}&canned="+url; 
 	}
   </script>
   Insert canned response into 'New Message' box:
