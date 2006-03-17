@@ -2,6 +2,10 @@ CHANGELOG
 ---------
 Numbers on the left indicate the ID on the DanSoft Australia bug tracker.
 
+DanPHPSupport - 2006/03/18 CVS
+==============================
+* Canned responses don't work properly in FireFox -- FIXED
+
 DanPHPSupport - 0.41 BETA
 =========================
 - 0000020: [Bug] Category names aren't escaped correctly (daniel15)
